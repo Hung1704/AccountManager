@@ -2,7 +2,7 @@
 
 ## Overview
 
-This system is designed to automate account management tasks such as user creation, VPN configuration, RSA key generation, process group management, and more. By leveraging JSON configuration files, the system simplifies complex server operations, making it easier to manage large-scale student and TA accounts efficiently.
+This system automates account management tasks, such as user creation, VPN configuration, RSA key generation, process group management, and more. By leveraging JSON configuration files, the system simplifies complex server operations, making it easier to manage large-scale student and TA accounts efficiently.
 
 ## Key Features
 
@@ -36,91 +36,190 @@ If the operation requires administrative privileges, run the script with `sudo`:
 sudo python account.py -r <json_config_file>
 ```
 
-### JSON Configuration Files
+## JSON Configuration Files and Parameter Explanations
 
-Each JSON file defines a specific operation, such as account creation, password resetting, or VPN configuration. Below is a list of the main JSON files and what they do:
+Each JSON file defines a specific operation, such as account creation, password resetting, or VPN configuration. Below is a list of the main JSON files, their purposes, and a detailed explanation of the key parameters in each file:
 
-1. **`create.json`**  
-**Description**: Creates user accounts, including both students and TAs. Sets up home directories, quotas, and passwords.  
+### 1\. **`create.json`**
+
+**Description**: Creates user accounts (students and TAs), sets up home directories, quotas, and passwords.
+
+**Parameters**:
+
+* `creator`: (String) The name of the person or system creating the accounts.
+* `course_name`: (String) The course or group name associated with the accounts.
+* `term`: (String) The term or semester, e.g., `2024_Fall`.
+* `stu_from`, `stu_to`: (Int) The starting and ending numbers for student accounts.
+* `TA_from`, `TA_to`: (Int) The starting and ending numbers for TA accounts.
+* `Enable_Create`: (Boolean) Whether to enable account creation.
+* `Enable_Set_Process_Group`: (Boolean) Whether to enable process group assignments.
+* `process_groups`: (Array) List of process groups to which users will be added.
+* `Enable_Change_Password`: (Boolean) Whether to enable password changes.
+* `Random_Password`: (Boolean) If true, generate random passwords; otherwise, use a fixed format.
+* `prefix`, `special_length`, `suffix_length`, `special_chars`: (String/Int) Parameters for generating random passwords (prefix, length of special characters, and suffix).
+* `Enable_Set_User_Quota`: (Boolean) Whether to set storage quotas for users.
+* `student_quota_bsoft`, `student_quota_bhard`: (String) Soft and hard quota limits for student accounts.
+* `ta_quota_bsoft`, `ta_quota_bhard`: (String) Soft and hard quota limits for TA accounts.
+
 **Command**:
 
-   ```bash
-   ./01_run -r create.json
-   ```
+```bash
+./01_run -r create.json
+```
 
-2. **`reset_passwd.json`**  
-**Description**: Resets passwords for existing accounts. You can choose random password generation or set predefined formats.  
+### 2\. **`reset_passwd.json`**
+
+**Description**: Resets passwords for existing accounts.
+
+**Parameters**:
+
+* `Enable_Change_Password`: (Boolean) Whether to enable password resetting.
+* `Random_Password`: (Boolean) If true, generates random passwords; otherwise, uses predefined formats.
+* `prefix`, `special_length`, `suffix_length`, `special_chars`: (String/Int) Parameters for generating new passwords.
+
 **Command**:
 
-   ```bash
-   ./01_run -r reset_passwd.json
-   ```
+```bash
+./01_run -r reset_passwd.json
+```
 
-3. **`add_vpn.json`**  
-**Description**: Creates VPN accounts with auto-generated passwords and saves the configuration for VPN systems.  
+### 3\. **`add_vpn.json`**
+
+**Description**: Creates VPN accounts with auto-generated passwords.
+
+**Parameters**:
+
+* `Enable_Create_VPN`: (Boolean) Whether to enable VPN account creation.
+* `VPN_Random_Password`: (Boolean) If true, generate random VPN passwords.
+* `VPN_password_prefix`, `VPN_password_special_length`, `VPN_password_suffix_length`, `VPN_password_special_chars`: (String/Int) Parameters for generating VPN passwords.
+
 **Command**:
 
-   ```bash
-   ./01_run -r add_vpn.json
-   ```
+```bash
+./01_run -r add_vpn.json
+```
 
-4. **`ban_users.json`**  
-**Description**: Bans user accounts, disabling their access temporarily.  
+### 4\. **`ban_users.json`**
+
+**Description**: Temporarily disables or "bans" user accounts.
+
+**Parameters**:
+
+* `Enable_Set_Expire_Day`: (Boolean) Whether to enable account suspension by setting an expiration date.
+* `expiry`: (String) The date on which the accounts will be suspended (e.g., `2024-09-19`).
+
 **Command**:
 
-   ```bash
-   ./01_run -r ban_users.json
-   ```
+```bash
+./01_run -r ban_users.json
+```
 
-5. **`unlock_binding_account.json`**  
-**Description**: Unlocks user accounts and optionally binds them with additional configurations such as RSA keys.  
+### 5\. **`unlock_binding_account.json`**
+
+**Description**: Unlocks user accounts and optionally binds them with additional configurations like RSA keys.
+
+**Parameters**:
+
+* `Enable_Unlock_Account`: (Boolean) Whether to unlock banned or suspended accounts.
+* `Enable_Set_Process_Group`: (Boolean) Whether to add users to process groups after unlocking.
+
 **Command**:
 
-   ```bash
-   ./01_run -r unlock_binding_account.json
-   ```
+```bash
+./01_run -r unlock_binding_account.json
+```
 
-6. **`add_process_group.json`**  
-**Description**: Adds users to specific process groups, granting them access to certain system resources.  
+### 6\. **`add_process_group.json`**
+
+**Description**: Adds users to specified process groups.
+
+**Parameters**:
+
+* `Enable_Set_Process_Group`: (Boolean) Whether to enable process group assignments.
+* `process_groups`: (Array) List of process groups to which users will be added.
+
 **Command**:
 
-   ```bash
-   ./01_run -r add_process_group.json
-   ```
+```bash
+./01_run -r add_process_group.json
+```
 
-7. **`remove_process_group.json`**  
-**Description**: Removes users from specified process groups, revoking their access.  
+### 7\. **`remove_process_group.json`**
+
+**Description**: Removes users from specified process groups.
+
+**Parameters**:
+
+* `Enable_Remove_Process_Group`: (Boolean) Whether to enable the removal of users from process groups.
+* `Remove_process_groups`: (Array) List of process groups from which users will be removed.
+
 **Command**:
 
-   ```bash
-   ./01_run -r remove_process_group.json
-   ```
+```bash
+./01_run -r remove_process_group.json
+```
 
-8. **`reset_quota.json`**  
-**Description**: Resets the storage quotas for user accounts, ensuring that soft and hard limits are properly set.  
+### 8\. **`reset_quota.json`**
+
+**Description**: Resets storage quotas for user accounts.
+
+**Parameters**:
+
+* `Enable_Set_User_Quota`: (Boolean) Whether to enable quota resetting for users.
+* `student_quota_bsoft`, `student_quota_bhard`: (String) New soft and hard quota limits for student accounts.
+* `ta_quota_bsoft`, `ta_quota_bhard`: (String) New soft and hard quota limits for TA accounts.
+
 **Command**:
 
-   ```bash
-   ./01_run -r reset_quota.json
-   ```
+```bash
+./01_run -r reset_quota.json
+```
 
-9. **`reset_expire_day.json`**  
-**Description**: Resets the expiration dates for accounts, extending or limiting their access periods.  
+### 9\. **`reset_expire_day.json`**
+
+**Description**: Resets the expiration date for accounts.
+
+**Parameters**:
+
+* `Enable_Set_Expire_Day`: (Boolean) Whether to enable resetting the expiration dates for accounts.
+* `expiry`: (String) New expiration date for the accounts (e.g., `2025-02-01`).
+
 **Command**:
 
-   ```bash
-   ./01_run -r reset_expire_day.json
-   ```
+```bash
+./01_run -r reset_expire_day.json
+```
 
-10. **`remove_vpn.json`**  
-**Description**: Deletes VPN accounts for users, removing their access to the VPN.  
+### 10\. **`remove_vpn.json`**
+
+**Description**: Deletes VPN accounts.
+
+**Parameters**:
+
+* `Enable_Delete_VPN`: (Boolean) Whether to delete VPN accounts.
+
 **Command**:
 
-  ```bash
-  ./01_run -r remove_vpn.json
-  ```
+```bash
+./01_run -r remove_vpn.json
+```
 
-### Example Workflow
+### 11\. **`copy_rsa_passwd.json`**
+
+**Description**: Copies RSA keys and password files.
+
+**Parameters**:
+
+* `Enable_Generate_RSA_Key`: (Boolean) Whether to generate RSA key pairs for user authentication.
+* `Enable_Copy_Files`: (Boolean) Whether to copy the generated RSA key files and password CSVs to designated locations.
+
+**Command**:
+
+```bash
+./01_run -r copy_rsa_passwd.json
+```
+
+## Example Workflow
 
 1. **Create New User Accounts**  
 Create student and TA accounts using the `create.json` configuration:
@@ -195,5 +294,6 @@ The folder structure of this system is as follows:
 
 ## Conclusion
 
-This Account Management System is designed to streamline and automate the administrative processes involved in managing large-scale student and TA accounts. By utilizing JSON configuration files, it allows flexibility and repeatability in managing users, quotas, VPNs, and process groups with minimal effort. Simply modify the JSON files to suit your needs, run the script, and the system will handle the rest.
+This Account Management System simplifies the complex task of managing multiple accounts, including user creation, password management, and VPN configuration, with full automation through JSON configuration files. Each JSON file parameter is designed to provide flexibility in managing users, quotas, VPNs, and process groups with minimal effort.
+
 
