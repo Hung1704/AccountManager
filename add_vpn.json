@@ -1,0 +1,19 @@
+{
+    "course_info": {
+        "creator": "LHLAIB",
+        "course_name": "eehpc",
+        "term": "2024_Fall",
+        "stu_from": 0,
+        "stu_to": 0,
+        "TA_from": 1,
+        "TA_to": 8
+    },
+    "vpn_settings": {
+        "Enable_Create_VPN": true,
+        "VPN_Random_Password": true,
+        "VPN_password_prefix": "EEHPC_VPN",
+        "VPN_password_special_length": 3,
+        "VPN_password_suffix_length": 4,
+        "VPN_password_special_chars": "!@#$%^&*"
+    }
+}

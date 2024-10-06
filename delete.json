@@ -1,0 +1,17 @@
+{
+    "course_info": {
+        "creator": "LHLAIB",
+        "course_name": "semi_aic",
+        "term": "2024_Fall",
+        "stu_from": 2,
+        "stu_to": 0,
+        "TA_from": 0,
+        "TA_to": 0
+    },
+    "delete_settings": {
+        "Enable_Delete": true,
+        "Enable_Backup_HomeDir": true,
+        "Enable_Delete_VPN": true,
+        "original_config": "config user group\nedit SSLVPN-Group\nset member \"arj\"\nnext\nend"
+    }
+}

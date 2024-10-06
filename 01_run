@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Check if -r (read JSON file) and -w (write JSON file) arguments are passed
+READ_ARG=""
+WRITE_ARG=""
+
+# Parse the options passed to the script
+while getopts "r:w:" opt; do
+  case $opt in
+    r) READ_ARG="-r $OPTARG" ;;  # Read JSON file argument
+    w) WRITE_ARG="-w $OPTARG" ;; # Write JSON file argument
+    \?) echo "Invalid option: -$OPTARG" ;; # Handle invalid options
+  esac
+done
+
+# Execute the Python script and pass the -r and -w arguments to it
+#sudo python account.py $READ_ARG $WRITE_ARG
+sudo /bin/python /root/Documents/Python_Account_Scripts/account.py $READ_ARG $WRITE_ARG

@@ -1,0 +1,15 @@
+{
+    "course_info": {
+        "creator": "LHLAIB",
+        "course_name": "iclab",
+        "term": "2024_Fall",
+        "stu_from": 70,
+        "stu_to": 70,
+        "TA_from": 0,
+        "TA_to": 0
+    },
+    "chage_settings": {
+        "Enable_Set_Days_Inactive": true,
+        "inactive_days": 60
+    }
+}

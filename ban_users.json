@@ -1,0 +1,15 @@
+{
+    "course_info": {
+        "creator": "LHLAIB",
+        "course_name": "cylee",
+        "term": "2024_Fall",
+        "stu_from": 1,
+        "stu_to": 3,
+        "TA_from": 1,
+        "TA_to": 2
+    },
+    "chage_settings": {
+        "Enable_Set_Expire_Day": true,
+        "expiry": "0"
+    }
+}

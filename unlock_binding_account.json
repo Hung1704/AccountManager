@@ -1,0 +1,17 @@
+{
+    "course_info": {
+        "creator": "LHLAIB",
+        "course_name": "aicintro",
+        "term": "2024_Fall",
+        "stu_from": 42,
+        "stu_to": 0,
+        "TA_from": 0,
+        "TA_to": 0
+    },
+    "file_settings": {
+        "Enable_Generate_RSA_Key": false,
+        "Enable_Copy_Files": false,
+        "destination_base": "~/Documents/EEHPC_Account/COURSE/",
+        "Enable_Unlock_Account": true
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "course_info": {
+        "creator": "LHLAIB",
+        "course_name": "vlsi",
+        "term": "2024_Fall",
+        "stu_from": 0,
+        "stu_to": 0,
+        "TA_from": 0,
+        "TA_to": 0
+    },
+    "file_settings": {
+        "Enable_Generate_RSA_Key": true,
+        "Enable_Copy_Files": true,
+        "destination_base": "~/Documents/EEHPC_Account/COURSE/"
+    }
+    
+}

@@ -1,0 +1,23 @@
+{
+    "course_info": {
+        "creator": "LHLAIB",
+        "course_name": "iclab",
+        "term": "2024_Fall",
+        "stu_from": 0,
+        "stu_to": 0,
+        "TA_from": 1,
+        "TA_to": 0
+    },
+    "quota_settings": {
+        "Enable_Set_User_Quota": true,
+        "student_quota_bsoft": "35G",
+        "student_quota_bhard": "40G",
+        "ta_quota_bsoft": "10T",
+        "ta_quota_bhard": "20T"
+    },
+    "group_quota_settings": {
+        "Enable_Set_Group_Quota": true,
+        "group_quota_bsoft": "30T",
+        "group_quota_bhard": "30T"
+    }
+}

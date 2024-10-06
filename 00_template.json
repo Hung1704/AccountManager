@@ -1,0 +1,63 @@
+{
+    "course_info": {
+        "creator": "Kyle",
+        "course_name": "iclab",
+        "term": "2024_Fall",
+        "stu_from": 1,
+        "stu_to": 3,
+        "TA_from": 1,
+        "TA_to": 2
+    },
+    "account_settings": {
+        "Enable_Create": true,
+        "Enable_Set_Process_Group": true,
+        "process_groups": ["ADFP"],
+        "Enable_Remove_Process_Group": false,
+        "Remove_process_groups": ["U18"]
+    },
+    "password_settings": {
+        "Enable_Change_Password": true,
+        "Random_Password": true,
+        "prefix": "EEHPC",
+        "special_length": 3,
+        "suffix_length": 4,
+        "special_chars": "!@#$%^&*"
+    },
+    "quota_settings": {
+        "Enable_Set_User_Quota": true,
+        "student_quota_bsoft": "30G",
+        "student_quota_bhard": "35G",
+        "ta_quota_bsoft": "50G",
+        "ta_quota_bhard": "55G"
+    },
+    "group_quota_settings": {
+        "Enable_Set_Group_Quota": true,
+        "group_quota_bsoft": "3T",
+        "group_quota_bhard": "3T"
+    },
+    "chage_settings": {
+        "Enable_Set_Expire_Day": true,
+        "expiry": "2024-09-19",
+        "Enable_Set_Days_Inactive": false,
+        "inactive_days": 60
+    },
+    "file_settings": {
+        "Enable_Generate_RSA_Key": false,
+        "Enable_Copy_Files": false,
+        "destination_base": "~/Documents/EEHPC_Account/COURSE/"
+    },
+    "vpn_settings": {
+        "Enable_Create_VPN": true,
+        "VPN_Random_Password": true,
+        "VPN_password_prefix": "EEHPC_VPN",
+        "VPN_password_special_length": 3,
+        "VPN_password_suffix_length": 4,
+        "VPN_password_special_chars": "!@#$%^&*"
+    },
+    "delete_settings": {
+        "Enable_Delete": false,
+        "Enable_Backup_HomeDir": false,
+        "Enable_Delete_VPN": false,
+        "original_config": "config user group\nedit SSLVPN-Group\nset member \"arj\"\nnext\nend"
+    }
+}
